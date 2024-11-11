@@ -17,20 +17,18 @@ export interface PatientData {
 export const loginPatient = async (
     email: string,
     password: string
-): Promise<{ success: boolean; patientData?: PatientData }> => {
+): Promise<{ success: boolean; adminId?: string; patientId?: string; patientData?: PatientData }> => {
     try {
-        //console.log("Iniciando búsqueda de paciente con email:", email);
-
         // Obtener la colección de administradores
         const administratorsRef = collection(db, "administrators");
         const administratorsSnapshot = await getDocs(administratorsRef);
 
         // Recorrer cada administrador
         for (const adminDoc of administratorsSnapshot.docs) {
-            const userId = adminDoc.id;
+            const adminId = adminDoc.id; // ID del administrador
 
             // Referencia a la colección de pacientes del administrador
-            const patientsRef = collection(db, "administrators", userId, "patients");
+            const patientsRef = collection(db, "administrators", adminId, "patients");
 
             // Query para buscar el paciente con el correo y contraseña especificados
             const patientQuery = query(
@@ -44,10 +42,13 @@ export const loginPatient = async (
             // Verificar si se encontró un paciente con las credenciales dadas
             if (!patientSnapshot.empty) {
                 const patientDoc = patientSnapshot.docs[0]; // Tomar el primer documento que coincida
+                const patientId = patientDoc.id; // ID del paciente
                 const patientData = patientDoc.data() as PatientData;
 
                 return {
                     success: true,
+                    adminId, // Retorna el ID del administrador
+                    patientId, // Retorna el ID del paciente
                     patientData, // Retorna los datos del paciente
                 };
             }

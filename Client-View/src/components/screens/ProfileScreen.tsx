@@ -32,29 +32,40 @@ const ProfileScreen: React.FC = () => {
                 App name
             </header>
             <main className="flex-grow p-6">
-                {/* Mensaje de bienvenida */}
-                <h1 className="text-2xl font-bold mb-4">Bienvenido, {patientData.name} {patientData.lastname}</h1>
+                <h1 className="text-2xl font-bold mb-4 text-center">Bienvenido {patientData.name}</h1>
 
-                {/* Tabla con la información del paciente */}
-                <table className="w-full border-collapse border border-orange-600 text-center mb-4">
+                {/* Tabla con una sola columna que muestra la información del paciente */}
+                <table className="w-full border-collapse border border-orange-600 mb-4 text-left">
                     <tbody>
                         <tr>
-                            <td className="border border-orange-600 px-4 py-2">Nombre del paciente:</td>
-                            <td className="border border-orange-600 px-4 py-2">{patientData.name} {patientData.lastname}</td>
-                            <td className="border border-orange-600 px-4 py-2">Fecha de Inicio:</td>
-                            <td className="border border-orange-600 px-4 py-2">{patientData.startDate}</td>
+                            <td className="border border-orange-600 px-4 py-2" colSpan={2}>
+                                <strong>Nombre del paciente:</strong> {patientData.name} {patientData.lastname}
+                            </td>
                         </tr>
                         <tr>
-                            <td className="border border-orange-600 px-4 py-2">Correo electrónico:</td>
-                            <td className="border border-orange-600 px-4 py-2">{patientData.email}</td>
-                            <td className="border border-orange-600 px-4 py-2">Número:</td>
-                            <td className="border border-orange-600 px-4 py-2">{patientData.phoneNumber}</td>
+                            <td className="border border-orange-600 px-4 py-2" colSpan={2}>
+                                <strong>Fecha de Inicio:</strong> {patientData.startDate}
+                            </td>
                         </tr>
                         <tr>
-                            <td className="border border-orange-600 px-4 py-2">Objetivo:</td>
-                            <td className="border border-orange-600 px-4 py-2">{patientData.goal}</td>
-                            <td className="border border-orange-600 px-4 py-2">Siguiente cita:</td>
-                            <td className="border border-orange-600 px-4 py-2">{patientData.nextAppointment}</td>
+                            <td className="border border-orange-600 px-4 py-2" colSpan={2}>
+                                <strong>Correo electrónico:</strong> {patientData.email}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="border border-orange-600 px-4 py-2" colSpan={2}>
+                                <strong>Número:</strong> {patientData.phoneNumber}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="border border-orange-600 px-4 py-2" colSpan={2}>
+                                <strong>Objetivo:</strong> {patientData.goal}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="border border-orange-600 px-4 py-2" colSpan={2}>
+                                <strong>Siguiente cita:</strong> {patientData.nextAppointment}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

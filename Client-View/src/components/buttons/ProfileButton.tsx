@@ -4,13 +4,16 @@ import { PatientData } from "../../services/patientLoginService"; // Asegúrate 
 
 interface ProfileButtonProps {
   patient: PatientData; // Tipo de la información del paciente
+  adminId: string;
+  patientId: string;
 }
 
-const ProfileButton: React.FC<ProfileButtonProps> = ({ patient }) => {
+const ProfileButton: React.FC<ProfileButtonProps> = ({ patient, adminId, patientId }) => {
   const navigate = useNavigate();
 
   const handleProfileClick = () => {
-    navigate("/profile", { state: { patient } }); // Pasa la información del paciente
+    // Pasamos adminId, patientId y los datos del paciente en el state al navegar
+    navigate("/profile", { state: { patient, adminId, patientId } });
   };
 
   return (

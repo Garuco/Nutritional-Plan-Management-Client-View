@@ -4,13 +4,15 @@ import { PatientData } from "../../services/patientLoginService";
 
 interface NutritionalPlanButtonProps {
   patient: PatientData;
+  adminId: string;
+  patientId: string;
 }
 
-const NutritionalPlanButton: React.FC<NutritionalPlanButtonProps> = ({ patient }) => {
+const NutritionalPlanButton: React.FC<NutritionalPlanButtonProps> = ({ patient, adminId, patientId }) => {
   const navigate = useNavigate();
 
   const handleNutritionalPlanClick = () => {
-    navigate("/nutritional-plan", { state: { patient } });
+    navigate("/nutritional-plan", { state: { patient, adminId, patientId } });
   };
 
   return (
