@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { getPatientNutritionalPlan, NutritionalPlanData } from "../../services/nutritionalPlanService";
 import ProfileButton from "../buttons/ProfileButton";
 import NutritionalPlanButton from "../buttons/NutritionalPlanButton";
+import LogoutButton from "../buttons/LogoutButton";  // Importa el LogoutButton
 
 const NutritionalPlanScreen: React.FC = () => {
     const location = useLocation();
@@ -28,6 +29,9 @@ const NutritionalPlanScreen: React.FC = () => {
         <div className="flex flex-col min-h-screen bg-white">
             <header className="bg-darkBlue text-white text-center py-4 text-lg font-semibold font-leagueSpartan uppercase">
                 App name
+                <div className="absolute top-4 right-4">
+                    <LogoutButton />
+                </div>
             </header>
             <main className="flex-grow p-6">
                 <h1 className="text-2xl font-bold mb-4 text-left text-black font-leagueSpartan uppercase">My Plan</h1>
@@ -40,9 +44,9 @@ const NutritionalPlanScreen: React.FC = () => {
                             <thead>
                                 <tr>
                                     <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-leagueSpartan uppercase">Intercambio</th>
-                                    <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-leagueSpartan uppercase">Total</th>
+                                    <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">Total</th>
                                     {nutritionalPlan.mealCategories.map((category: string, index: number) => (
-                                        <th key={index} className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-leagueSpartan uppercase">
+                                        <th key={index} className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">
                                             {category}
                                         </th>
                                     ))}

@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import ProfileButton from "../buttons/ProfileButton";
 import NutritionalPlanButton from "../buttons/NutritionalPlanButton";
+import LogoutButton from "../buttons/LogoutButton";  // Importa el LogoutButton
 
 interface PatientData {
     name: string;
@@ -28,8 +29,12 @@ const ProfileScreen: React.FC = () => {
 
     return (
         <div className="flex flex-col min-h-screen bg-white">
-            <header className="bg-darkBlue text-white text-center py-4 text-lg font-semibold font-leagueSpartan uppercase">
-                App name
+            <header className="bg-darkBlue text-white text-center py-4 text-lg font-semibold font-leagueSpartan uppercase relative">
+                <span>App name</span>
+                {/* Aquí se posiciona el botón de Logout */}
+                <div className="absolute top-4 right-4">
+                    <LogoutButton />
+                </div>
             </header>
             <main className="flex-grow p-6">
                 <h1 className="text-2xl font-bold mb-4 text-center text-black font-leagueSpartan uppercase">Bienvenido {patientData.name}</h1>
