@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import ProfileButton from "../buttons/ProfileButton";
 import NutritionalPlanButton from "../buttons/NutritionalPlanButton";
 import LogoutButton from "../buttons/LogoutButton";  // Importa el LogoutButton
+import FoodExchangesButton from "../buttons/FoodExchangesButton";
 
 interface PatientData {
     name: string;
@@ -30,7 +31,7 @@ const ProfileScreen: React.FC = () => {
     return (
         <div className="flex flex-col min-h-screen bg-white">
             <header className="bg-darkBlue text-white text-center py-4 text-lg font-semibold font-leagueSpartan uppercase relative">
-                <span>App name</span>
+                <span>Nutritional Plan Management System</span>
                 {/* Aquí se posiciona el botón de Logout */}
                 <div className="absolute top-4 right-4">
                     <LogoutButton />
@@ -77,11 +78,11 @@ const ProfileScreen: React.FC = () => {
             <footer className="bg-darkBlue flex justify-around py-4">
                 <ProfileButton adminId={adminId} patientId={patientId} patient={patient} />
                 <NutritionalPlanButton
-                    patient={patient}
                     adminId={adminId}
                     patientId={patientId}
+                    patient={patient}
                 />
-                <button className="text-white font-comfortaa">Base de Datos</button>
+                <FoodExchangesButton adminId={adminId} patientId={patientId} patient={patient} />
             </footer>
         </div>
     );

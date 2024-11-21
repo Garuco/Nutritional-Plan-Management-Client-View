@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 
 // Interfaz para representar los datos del plan nutricional
 export interface NutritionalPlanData {
+  [x: string]: any;
   mealCategories: string[]; // Tiempos de comida
   exchanges: FoodExchange[]; // Categorías de intercambio
   notes: string; // Notas del plan

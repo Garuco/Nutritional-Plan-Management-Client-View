@@ -4,6 +4,7 @@ import { getPatientNutritionalPlan, NutritionalPlanData } from "../../services/n
 import ProfileButton from "../buttons/ProfileButton";
 import NutritionalPlanButton from "../buttons/NutritionalPlanButton";
 import LogoutButton from "../buttons/LogoutButton";  // Importa el LogoutButton
+import FoodExchangesButton from "../buttons/FoodExchangesButton";
 
 const NutritionalPlanScreen: React.FC = () => {
     const location = useLocation();
@@ -23,12 +24,11 @@ const NutritionalPlanScreen: React.FC = () => {
             setError("Información incompleta: no se recibió adminId o patientId.");
         }
     }, [adminId, patientId]);
-    console.log(nutritionalPlan);
 
     return (
         <div className="flex flex-col min-h-screen bg-white">
             <header className="bg-darkBlue text-white text-center py-4 text-lg font-semibold font-leagueSpartan uppercase">
-                App name
+                Nutritional Plan Management System
                 <div className="absolute top-4 right-4">
                     <LogoutButton />
                 </div>
@@ -39,40 +39,42 @@ const NutritionalPlanScreen: React.FC = () => {
                     <p className="text-red-500 font-comfortaa">{error}</p>
                 ) : nutritionalPlan ? (
                     <div>
-                        {/* Tabla del plan */}
-                        <table className="w-full border-collapse border border-lightOrange text-left font-comfortaa">
-                            <thead>
-                                <tr>
-                                    <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-leagueSpartan uppercase">Intercambio</th>
-                                    <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">Total</th>
-                                    {nutritionalPlan.mealCategories.map((category: string, index: number) => (
-                                        <th key={index} className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">
-                                            {category}
-                                        </th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {nutritionalPlan.exchanges
-                                    .filter((type: any) => type.total > 0)
-                                    .map((type: any, rowIndex: number) => (
-                                        <tr key={rowIndex}>
-                                            <td className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-comfortaa">
-                                                {type.name}
-                                            </td>
-                                            <td className="border border-lightOrange px-4 py-2 text-center font-comfortaa">{type.total}</td>
-                                            {type.quantities.map((quantity: number, colIndex: number) => (
-                                                <td
-                                                    key={colIndex}
-                                                    className="border border-lightOrange px-4 py-2 text-center font-comfortaa"
-                                                >
-                                                    {quantity > 0 ? quantity : ""}
+                        {/* Contenedor con scroll horizontal para la tabla */}
+                        <div className="overflow-x-auto">
+                            <table className="min-w-full border-collapse border border-lightOrange text-left font-comfortaa">
+                                <thead>
+                                    <tr>
+                                        <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-leagueSpartan uppercase">Intercambio</th>
+                                        <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">Total</th>
+                                        {nutritionalPlan.mealCategories.map((category: string, index: number) => (
+                                            <th key={index} className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">
+                                                {category}
+                                            </th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {nutritionalPlan.exchanges
+                                        .filter((type: any) => type.total > 0)
+                                        .map((type: any, rowIndex: number) => (
+                                            <tr key={rowIndex}>
+                                                <td className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-comfortaa">
+                                                    {type.name}
                                                 </td>
-                                            ))}
-                                        </tr>
-                                    ))}
-                            </tbody>
-                        </table>
+                                                <td className="border border-lightOrange px-4 py-2 text-center font-comfortaa">{type.total}</td>
+                                                {type.quantities.map((quantity: number, colIndex: number) => (
+                                                    <td
+                                                        key={colIndex}
+                                                        className="border border-lightOrange px-4 py-2 text-center font-comfortaa"
+                                                    >
+                                                        {quantity > 0 ? quantity : ""}
+                                                    </td>
+                                                ))}
+                                            </tr>
+                                        ))}
+                                </tbody>
+                            </table>
+                        </div>
 
                         {/* Notas */}
                         <div className="mt-6">
@@ -98,7 +100,7 @@ const NutritionalPlanScreen: React.FC = () => {
                     patientId={patientId}
                     patient={patient}
                 />
-                <button className="text-white font-comfortaa">Base de Datos</button>
+                <FoodExchangesButton adminId={adminId} patientId={patientId} patient={patient} />
             </footer>
         </div>
     );
