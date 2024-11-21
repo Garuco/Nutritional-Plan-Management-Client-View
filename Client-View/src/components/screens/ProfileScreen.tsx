@@ -31,7 +31,7 @@ const ProfileScreen: React.FC = () => {
     return (
         <div className="flex flex-col min-h-screen bg-white">
             <header className="bg-darkBlue text-white text-center py-4 text-lg font-semibold font-leagueSpartan uppercase relative">
-                <span>Nutritional Plan Management System</span>
+                <span>Nutritional Plan</span>
                 {/* Aquí se posiciona el botón de Logout */}
                 <div className="absolute top-4 right-4">
                     <LogoutButton />

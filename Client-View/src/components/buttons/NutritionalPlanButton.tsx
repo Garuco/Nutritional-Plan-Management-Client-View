@@ -18,7 +18,7 @@ const NutritionalPlanButton: React.FC<NutritionalPlanButtonProps> = ({ patient, 
 
   return (
     <button onClick={handleNutritionalPlanClick} className="flex items-center text-white">
-      <DocumentTextIcon className="w-6 h-6 text-white mr-2" /> {/* Añade el ícono */}
+      <DocumentTextIcon className="w-6 h-6 text-white mr-2 hover:text-darkOrange transition" /> {/* Añade el ícono */}
     </button>
   );
 };

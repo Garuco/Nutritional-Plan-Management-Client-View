@@ -28,7 +28,7 @@ const NutritionalPlanScreen: React.FC = () => {
     return (
         <div className="flex flex-col min-h-screen bg-white">
             <header className="bg-darkBlue text-white text-center py-4 text-lg font-semibold font-leagueSpartan uppercase">
-                Nutritional Plan Management System
+                Nutritional Plan
                 <div className="absolute top-4 right-4">
                     <LogoutButton />
                 </div>

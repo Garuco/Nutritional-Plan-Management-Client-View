@@ -1,0 +1,21 @@
+{
+    "short_name": "Nutritional Plan",
+    "name": "Nutritional Plan Management",
+    "icons": [
+      {
+        "src": "icons/test.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/test.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000"
+  }
+  

@@ -20,7 +20,7 @@ const ProfileButton: React.FC<ProfileButtonProps> = ({ patient, adminId, patient
   return (
     <button
       onClick={handleProfileClick}
-      className="bg-darkBlue text-white p-4 rounded flex items-center justify-center"
+      className="bg-darkBlue text-white p-4 rounded flex items-center justify-center hover:text-darkOrange transition"
     >
       <UserIcon className="w-6 h-6" /> {/* Ícono de usuario con un tamaño ajustado */}
     </button>
