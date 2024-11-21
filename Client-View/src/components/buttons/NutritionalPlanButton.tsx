@@ -12,6 +12,8 @@ const NutritionalPlanButton: React.FC<NutritionalPlanButtonProps> = ({ patient, 
   const navigate = useNavigate();
 
   const handleNutritionalPlanClick = () => {
+    console.log("Boton Plan", adminId);
+    console.log("Boton Plan", patientId);
     navigate("/nutritional-plan", { state: { patient, adminId, patientId } });
   };
 

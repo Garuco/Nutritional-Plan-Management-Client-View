@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "LeagueSpartan";
+  src: url("/fonts/LeagueSpartan.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa.ttf") format("truetype");
+}

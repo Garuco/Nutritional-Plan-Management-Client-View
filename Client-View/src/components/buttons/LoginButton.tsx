@@ -8,7 +8,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="bg-blue-800 text-white px-4 py-2 rounded"
+      className="bg-darkBlue text-darkOrange px-4 py-2 rounded font-comfortaa"
     >
       Ingresar
     </button>

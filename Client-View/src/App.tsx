@@ -2,7 +2,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginScreen from "./components/screens/LoginScreen";
 import ProfileScreen from "./components/screens/ProfileScreen";
-import NutritionalPlanScreen from "./components/screens/NutriotinalPlanScreen";
+import NutritionalPlanScreen from "./components/screens/NutritionalPlanScreen";
+
 
 function App() {
   return (
