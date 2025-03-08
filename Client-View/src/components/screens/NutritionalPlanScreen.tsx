@@ -33,7 +33,7 @@ const NutritionalPlanScreen: React.FC = () => {
                     <LogoutButton />
                 </div>
             </header>
-            <main className="flex-grow p-6">
+            <main className="flex-grow p-6 mb-16">
                 <h1 className="text-2xl font-bold mb-4 text-left text-black font-leagueSpartan uppercase">My Plan</h1>
                 {error ? (
                     <p className="text-red-500 font-comfortaa">{error}</p>
@@ -44,7 +44,7 @@ const NutritionalPlanScreen: React.FC = () => {
                             <table className="min-w-full border-collapse border border-lightOrange text-left font-comfortaa">
                                 <thead>
                                     <tr>
-                                        <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-leagueSpartan uppercase">Intercambio</th>
+                                        <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-leagueSpartan uppercase sticky left-0 z-10">Intercambio</th>
                                         <th className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">Total</th>
                                         {nutritionalPlan.mealCategories.map((category: string, index: number) => (
                                             <th key={index} className="border border-lightOrange px-4 py-2 bg-lightOrange text-black text-center font-leagueSpartan uppercase">
@@ -58,7 +58,7 @@ const NutritionalPlanScreen: React.FC = () => {
                                         .filter((type: any) => type.total > 0)
                                         .map((type: any, rowIndex: number) => (
                                             <tr key={rowIndex}>
-                                                <td className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-comfortaa">
+                                                <td className="border border-lightOrange px-4 py-2 bg-lightOrange text-black font-comfortaa sticky left-0 z-10">
                                                     {type.name}
                                                 </td>
                                                 <td className="border border-lightOrange px-4 py-2 text-center font-comfortaa">{type.total}</td>
@@ -75,7 +75,7 @@ const NutritionalPlanScreen: React.FC = () => {
                                 </tbody>
                             </table>
                         </div>
-
+    
                         {/* Notas */}
                         <div className="mt-6">
                             <h2 className="text-lg font-semibold mb-2 text-black border-b border-black font-leagueSpartan uppercase">Notas</h2>
@@ -87,23 +87,19 @@ const NutritionalPlanScreen: React.FC = () => {
                                 ))}
                             </ul>
                         </div>
-
                     </div>
                 ) : (
                     <p className="font-comfortaa">Cargando plan nutricional...</p>
                 )}
             </main>
-            <footer className="bg-darkBlue flex justify-around py-4">
+            <footer className="bg-darkBlue flex justify-around py-4 fixed bottom-0 w-full">
                 <ProfileButton adminId={adminId} patientId={patientId} patient={patient} />
-                <NutritionalPlanButton
-                    adminId={adminId}
-                    patientId={patientId}
-                    patient={patient}
-                />
+                <NutritionalPlanButton adminId={adminId} patientId={patientId} patient={patient} />
                 <FoodExchangesButton adminId={adminId} patientId={patientId} patient={patient} />
             </footer>
         </div>
     );
+    
 };
 
 export default NutritionalPlanScreen;
